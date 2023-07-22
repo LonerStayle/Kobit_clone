@@ -5,10 +5,11 @@ object Dependencies {
     const val MIN_SDK = 30
     const val TARGET_SDK = 33
 
-    const val JVM_TARGET = "1.8"
+    const val JVM_TARGET = "17"
     const val KOTLIN_COMPLIER_EXTENSION = "1.3.2"
 
-
+    const val KOTLIN = "1.7.20"
+    const val ANDROID = "8.0.2"
 
     object Junit {
         const val Junit = "junit:junit:4.13.2"
@@ -32,7 +33,7 @@ object Dependencies {
 
         private const val DATA_STORE_VERSION = "1.0.0"
         const val DataStore = "androidx.datastore:datastore:$DATA_STORE_VERSION"
-        const val DataStore_Core = "androidx.datastore:datastore-core:1.0.0$DATA_STORE_VERSION"
+        const val DataStore_Core = "androidx.datastore:datastore-core:$DATA_STORE_VERSION"
     }
 
 
@@ -42,6 +43,12 @@ object Dependencies {
         const val Moshi = "com.squareup.retrofit2:converter-moshi:$VERSION"
     }
 
+    object OkHttp3 {
+        private const val VERSION = "3.11.0"
+        const val Core = "com.squareup.okhttp3:okhttp:$VERSION"
+        const val Logging = "com.squareup.okhttp3:logging-interceptor:$VERSION"
+    }
+
     object Room {
         private const val VERSION = "2.5.0"
         const val Runtime = "androidx.room:room-runtime:$VERSION"
@@ -49,13 +56,14 @@ object Dependencies {
         const val Ktx = "androidx.room:room-ktx:$VERSION"
     }
 
-    object Hilt{
-        private const val VERSION = "2.44"
+    object Hilt {
+        const val VERSION = "2.44"
         const val Core = "com.google.dagger:hilt-android:$VERSION"
         const val Compiler = "com.google.dagger:hilt-compiler:$VERSION"
+        const val GradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$VERSION"
     }
 
-    object Coil{
+    object Coil {
         private const val VERSION = "2.4.0"
         const val Core = "io.coil-kt:coil:$VERSION"
         const val Compose = "io.coil-kt:coil-compose:$VERSION"

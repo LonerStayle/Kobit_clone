@@ -15,6 +15,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        buildConfigField("String", "BASE_URL", "\"https://api.korbit.co.kr/v1/\"")
     }
 
     buildTypes {
@@ -27,11 +28,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         jvmTarget = Dependencies.JVM_TARGET
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 
@@ -39,6 +43,10 @@ dependencies {
     implementation(project(":domain"))
     implementation(Dependencies.Retrofit2.Core)
     implementation(Dependencies.Retrofit2.Moshi)
+    implementation(Dependencies.OkHttp3.Core)
+    implementation(Dependencies.OkHttp3.Logging)
+
+
     annotationProcessor(Dependencies.Room.Compiler)
     kapt(Dependencies.Room.Compiler)
     implementation(Dependencies.Room.Runtime)
@@ -48,4 +56,5 @@ dependencies {
     kapt(Dependencies.Hilt.Compiler)
 
     implementation(Dependencies.AndroidX.DataStore)
+
 }
