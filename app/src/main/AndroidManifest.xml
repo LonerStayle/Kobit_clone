@@ -6,11 +6,11 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Kobit"
+        android:theme="@style/Theme.Korbit"
         tools:targetApi="31"
         android:name=".app.TickerApp"
         >
@@ -18,7 +18,7 @@
             android:name=".ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Kobit">
+            android:theme="@style/Theme.Korbit">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

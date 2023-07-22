@@ -2,7 +2,6 @@ package kr.loner.domain.model
 
 data class Ticker(
     val timestamp: Long,
-
 //    현재가
     val last: Double,
     val open: Double,
@@ -18,6 +17,5 @@ data class Ticker(
     val changePercent: Double,
 //    가상 자산명
     val currencyPair: String,
-
     val isFavorite:Boolean = false,
 )

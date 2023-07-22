@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "kr.loner.kobit"
+    namespace = "kr.loner.korbit"
     compileSdk = Dependencies.COMPILE_SDK
 
     defaultConfig {
-        applicationId = "kr.loner.kobit"
+        applicationId = "kr.loner.korbit"
         minSdk = Dependencies.MIN_SDK
         targetSdk = Dependencies.TARGET_SDK
         versionCode = 1

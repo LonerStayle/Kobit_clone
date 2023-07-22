@@ -46,15 +46,15 @@ dependencies {
     implementation(Dependencies.OkHttp3.Core)
     implementation(Dependencies.OkHttp3.Logging)
 
-
-    annotationProcessor(Dependencies.Room.Compiler)
     kapt(Dependencies.Room.Compiler)
+    implementation(Dependencies.Room.Ktx)
     implementation(Dependencies.Room.Runtime)
-    implementation(Dependencies.AndroidX.Paging_Runtime)
 
     implementation(Dependencies.Hilt.Core)
     kapt(Dependencies.Hilt.Compiler)
 
+    implementation(Dependencies.AndroidX.Paging_Runtime)
     implementation(Dependencies.AndroidX.DataStore)
+
 
 }

@@ -6,6 +6,7 @@ import kr.loner.domain.model.TickerList
 
 interface TickerRepository {
     suspend fun getTickerList(): Flow<TickerList>
+    suspend fun getFavoriteTickerList(): Flow<TickerList>
     suspend fun isTickerFavorite(bookMark: BookMark)
     suspend fun getTickerBookMarkList(): Flow<List<BookMark>>
 }
