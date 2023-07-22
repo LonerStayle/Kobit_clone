@@ -15,7 +15,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
-        buildConfigField("String", "BASE_URL", "\"https://api.korbit.co.kr/v1/\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.korbit.co.kr/\"")
     }
 
     buildTypes {

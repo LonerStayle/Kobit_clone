@@ -62,6 +62,7 @@ dependencies {
     implementation(Dependencies.AndroidX.Compose_Preview)
     implementation(Dependencies.AndroidX.Compose_Material3)
     implementation(Dependencies.AndroidX.Compose_Navigation)
+    implementation(Dependencies.AndroidX.Compose_Hilt_Navigation)
     implementation(Dependencies.AndroidX.Paging_Runtime)
 
     implementation(Dependencies.Hilt.Core)

@@ -1,7 +1,6 @@
-package kr.loner.kobit
+package kr.loner.kobit.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,36 +10,33 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.lifecycleScope
+import androidx.hilt.navigation.compose.hiltViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import kr.loner.data.TickerApi
-import kr.loner.kobit.ui.theme.BaseTheme
-import javax.inject.Inject
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kr.loner.kobit.ui.theme.KobitTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var test: TickerApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BaseTheme {
+            KobitTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                MainScreen()
+
             }
         }
+    }
 
-        lifecycleScope.launch {
-            Log.d("checkk",test.getTickerAll().toString())
+    @Composable
+    private fun MainScreen(viewModel: MainViewModel = hiltViewModel()) {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            Greeting("Android")
         }
-
     }
 }
 
@@ -55,7 +51,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    BaseTheme {
+    KobitTheme {
         Greeting("Android")
     }
 }

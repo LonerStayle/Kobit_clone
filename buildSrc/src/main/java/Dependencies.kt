@@ -26,6 +26,7 @@ object Dependencies {
         const val Compose_Material3 = "androidx.compose.material3:material3:1.0.1"
         const val Compose_Activty = "androidx.activity:activity-compose:1.7.2"
         const val Compose_Navigation = "androidx.navigation:navigation-compose:2.6.0"
+        const val Compose_Hilt_Navigation = "androidx.hilt:hilt-navigation-compose:1.0.0"
 
         private const val PAGING_VERSION = "3.1.1"
         const val Paging_Runtime = "androidx.paging:paging-runtime:$PAGING_VERSION"
@@ -44,7 +45,7 @@ object Dependencies {
     }
 
     object OkHttp3 {
-        private const val VERSION = "3.11.0"
+        private const val VERSION = "4.11.0"
         const val Core = "com.squareup.okhttp3:okhttp:$VERSION"
         const val Logging = "com.squareup.okhttp3:logging-interceptor:$VERSION"
     }

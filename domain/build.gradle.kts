@@ -13,6 +13,8 @@ dependencies {
     api(kotlin("reflect"))
     implementation(Dependencies.AndroidX.Paging_Common)
     implementation(Dependencies.AndroidX.DataStore_Core)
+    implementation("javax.inject:javax.inject:1")
+
 }
 
 
