@@ -13,42 +13,42 @@ class SearchTickerListUseCase @Inject constructor(
 ) : UseCase<SearchTickerListUseCase.SearchQuery, Flow<TickerList>>() {
     override suspend fun invoke(param: SearchQuery): Flow<TickerList> {
         return tickerRepository.getTickerList().map { list ->
-            val filtersByQuery = list.tickers.sortedBy(Ticker::volume).filter { ticker ->
+            val filtersByQuery = list.tickers.sortedByDescending(Ticker::volume).filter { ticker ->
                 ticker.currencyPair.contains(param.queryText)
             }
 
             val result: List<Ticker> = filtersByQuery.sortedWith(
                 when (param.order) {
                     Order.CurrencyPairASC -> {
-                        compareByDescending { it.currencyPair }
+                        compareBy { it.currencyPair}
                     }
 
                     Order.CurrencyPairDESC -> {
-                        compareBy { it.currencyPair }
+                        compareByDescending { it.currencyPair}
                     }
 
                     Order.LastASC -> {
-                        compareByDescending { it.last }
-                    }
-
-                    Order.LastDESC -> {
                         compareBy { it.last }
                     }
 
-                    Order.ChangePercentASC -> {
-                        compareByDescending { it.changePercent }
+                    Order.LastDESC -> {
+                        compareByDescending { it.last }
                     }
 
-                    Order.ChangePercentDESC -> {
+                    Order.ChangePercentASC -> {
                         compareBy { it.changePercent }
                     }
 
+                    Order.ChangePercentDESC -> {
+                        compareByDescending { it.changePercent }
+                    }
+
                     Order.VolumeASC -> {
-                        compareByDescending { it.volume }
+                        compareBy { it.volume }
                     }
 
                     Order.VolumeDESC -> {
-                        compareBy { it.volume }
+                        compareByDescending { it.volume }
                     }
 
                     Order.None -> Comparator { _, _ -> 0 }

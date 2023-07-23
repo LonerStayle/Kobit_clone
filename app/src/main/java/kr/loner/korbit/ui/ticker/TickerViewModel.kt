@@ -46,15 +46,13 @@ class TickerViewModel @Inject constructor(
     val tickerList = _tickerList.asStateFlow()
 
     val favoriteList: StateFlow<UiState<TickerListUiModel>> = tickerList.map { uiState ->
-        if (uiState.isError) {
-            UiState.Error(
-                uiState.exception ?: throw NullPointerException("Exception Data is Empty")
-            )
-        } else {
-            val listUiModel = uiState.data ?: return@map UiState.Loading
+        runCatching {
+            val listUiModel = uiState.data!!
             UiState.Success(
                 listUiModel.copy(tickerUiList = listUiModel.tickerUiList.filter(TickerUiModel::isFavorite))
             )
+        }.getOrElse {
+            UiState.Error(Exception(it))
         }
     }.catch {
         UiState.Error(Exception(it))
