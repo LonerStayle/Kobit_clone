@@ -37,6 +37,11 @@ object Dependencies {
         const val DataStore_Core = "androidx.datastore:datastore-core:$DATA_STORE_VERSION"
     }
 
+    object accompanistPager {
+        private const val VERSION = "0.28.0"
+        const val Core = "com.google.accompanist:accompanist-pager:$VERSION"
+        const val Indicators = "com.google.accompanist:accompanist-pager-indicators:$VERSION"
+    }
 
     object Retrofit2 {
         private const val VERSION = "2.9.0"

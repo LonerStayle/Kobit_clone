@@ -6,8 +6,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kr.loner.data.remote.service.TickerService
 import kr.loner.data.remote.source.TickerRemoteSource
-import retrofit2.Retrofit
-import retrofit2.create
 
 @InstallIn(SingletonComponent::class)
 @Module

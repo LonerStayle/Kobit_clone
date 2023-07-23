@@ -46,7 +46,7 @@ private fun Double.changePercentTransDecimals(): String {
         else -> ""
     }
     val formattedValue = String.format("%.2f", kotlin.math.abs(this))
-    return "$sign$formattedValue"
+    return "$sign$formattedValue%"
 }
 
 private fun Double.getGrowthStatus(): TickerUiModel.GrowthStatus {

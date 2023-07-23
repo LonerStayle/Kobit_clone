@@ -24,6 +24,8 @@ import kr.loner.korbit.ui.ticker.model.TickerListUiModel
 import kr.loner.korbit.ui.ticker.model.TickerUiModel
 import kr.loner.korbit.ui.util.UiState
 import kr.loner.korbit.ui.util.data
+import kr.loner.korbit.ui.util.exception
+import kr.loner.korbit.ui.util.isError
 import javax.inject.Inject
 
 @HiltViewModel
@@ -38,31 +40,50 @@ class TickerViewModel @Inject constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     private val searchTickerListFlow: Flow<TickerList> = searchQuery.flatMapLatest { query ->
         searchTickerListUseCase(query)
-    }.catch {
-        _tickerList.value = UiState.Error(Exception(it))
     }
 
     private val _tickerList = MutableStateFlow<UiState<TickerListUiModel>>(UiState.Loading)
     val tickerList = _tickerList.asStateFlow()
 
-    private val favoriteList: StateFlow<TickerListUiModel> = tickerList.map { uiState ->
-        val listUiModel = uiState.data ?: TickerListUiModel()
-        listUiModel.copy(tickerUiList = listUiModel.tickerUiList.filter(TickerUiModel::isFavorite))
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, TickerListUiModel())
+    val favoriteList: StateFlow<UiState<TickerListUiModel>> = tickerList.map { uiState ->
+        if (uiState.isError) {
+            UiState.Error(
+                uiState.exception ?: throw NullPointerException("Exception Data is Empty")
+            )
+        } else {
+            val listUiModel = uiState.data ?: return@map UiState.Loading
+            UiState.Success(
+                listUiModel.copy(tickerUiList = listUiModel.tickerUiList.filter(TickerUiModel::isFavorite))
+            )
+        }
+    }.catch {
+        UiState.Error(Exception(it))
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, UiState.Loading)
 
     init {
+        collectTickerList()
+    }
+
+    private fun collectTickerList() {
         viewModelScope.launch {
-            searchTickerListFlow.collectLatest { list ->
+            searchTickerListFlow.catch {
+                _tickerList.value = UiState.Error(Exception(it))
+            }.collectLatest { list ->
                 _tickerList.value = UiState.Success(list.toUiModel())
             }
         }
     }
 
-    fun setKeyword(keyword:String){
-        _searchQuery.value = searchQuery.value.copy(queryText = keyword)
+    fun refreshList() {
+        _tickerList.value = UiState.Loading
+        collectTickerList()
     }
 
-    fun setOrder(order:SearchTickerListUseCase.Order){
+    fun setQueryText(text: String) {
+        _searchQuery.value = searchQuery.value.copy(queryText = text)
+    }
+
+    fun setOrder(order: SearchTickerListUseCase.Order) {
         _searchQuery.value = searchQuery.value.copy(order = order)
     }
 

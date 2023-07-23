@@ -17,5 +17,5 @@ data class Ticker(
     val changePercent: Double,
 //    가상 자산명
     val currencyPair: String,
-    val isFavorite:Boolean = false,
+    val isFavorite: Boolean = false,
 )

@@ -18,11 +18,11 @@ data class TickerUiModel(
     val changePercent: String,
 //    가상 자산명
     val currencyPair: String,
-    val isFavorite:Boolean = false,
+    val isFavorite: Boolean = false,
     val growthType: GrowthStatus,
-    val orgData:Ticker,
-){
-    enum class GrowthStatus{
+    val orgData: Ticker,
+) {
+    enum class GrowthStatus {
         Zero,
         Increase,
         Decrease

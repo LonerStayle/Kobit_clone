@@ -20,7 +20,8 @@ class RoomModule {
             .build()
 
     @Provides
-    fun provideBookMarkDao(localDataBase: LocalDataBase):BookMarkDao = localDataBase.getBookMarkDao()
+    fun provideBookMarkDao(localDataBase: LocalDataBase): BookMarkDao =
+        localDataBase.getBookMarkDao()
 
 
     companion object {

@@ -10,5 +10,6 @@ class BookMarkLocalSource @Inject constructor(private val bookMarkDao: BookMarkD
 
     suspend fun isFavorite(bookMarkDto: BookMarkDto) = bookMarkDao.isFavorite(bookMarkDto)
 
-    suspend fun getBookMarkList(type: BookMarkDtoType): Flow<List<BookMarkDto>> = bookMarkDao.getBookMarkList(type)
+    suspend fun getBookMarkList(type: BookMarkDtoType): Flow<List<BookMarkDto>> =
+        bookMarkDao.getBookMarkList(type)
 }

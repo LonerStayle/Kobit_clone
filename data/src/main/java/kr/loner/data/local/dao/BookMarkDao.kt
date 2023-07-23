@@ -15,5 +15,5 @@ interface BookMarkDao {
     suspend fun isFavorite(bookMarkDto: BookMarkDto)
 
     @Query("SELECT * FROM BookMarkDto WHERE type = :type")
-    fun getBookMarkList(type:BookMarkDtoType): Flow<List<BookMarkDto>>
+    fun getBookMarkList(type: BookMarkDtoType): Flow<List<BookMarkDto>>
 }

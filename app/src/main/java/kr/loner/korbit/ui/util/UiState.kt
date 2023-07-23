@@ -14,6 +14,12 @@ sealed class UiState<out R> {
         }
     }
 }
+
 val <T> UiState<T>.data: T?
     get() = (this as? UiState.Success)?.data
+val <T> UiState<T>.isError: Boolean
+    get() = this is UiState.Error
+
+val <T> UiState<T>.exception: Exception?
+    get() = (this as? UiState.Error)?.exception
 

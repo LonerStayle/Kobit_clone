@@ -2,4 +2,7 @@
     <string name="app_name">Korbit</string>
     <string name="retry">재시도</string>
     <string name="data_result_error">데이터를 가져오지 못했습니다.</string>
+    <string name="ticker_tab_market">마켓</string>
+    <string name="ticker_tab_favorite">즐겨찾기</string>
+    <string name="ticker_search_hint">검색</string>
 </resources>

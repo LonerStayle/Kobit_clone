@@ -3,9 +3,7 @@ package kr.loner.korbit.ui.util.compose
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -19,11 +17,11 @@ import androidx.compose.ui.unit.dp
 import kr.loner.korbit.R
 
 @Composable
-fun LoadingView(modifier: Modifier){
+fun LoadingView(modifier: Modifier) {
     Box(
         modifier,
         contentAlignment = Alignment.Center
-    ){
+    ) {
         CircularProgressIndicator()
     }
 }
@@ -33,12 +31,12 @@ fun ErrorView(
     message: String,
     modifier: Modifier,
     onClickRetry: () -> Unit
-){
+) {
     Column(
         modifier = modifier.padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
-    ){
+    ) {
         Text(
             text = message,
             maxLines = 1,

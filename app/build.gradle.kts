@@ -65,6 +65,9 @@ dependencies {
     implementation(Dependencies.AndroidX.Compose_Hilt_Navigation)
     implementation(Dependencies.AndroidX.Paging_Runtime)
 
+//    implementation(Dependencies.accompanistPager.Core)
+//    implementation(Dependencies.accompanistPager.Indicators)
+
     implementation(Dependencies.Hilt.Core)
     kapt(Dependencies.Hilt.Compiler)
 
