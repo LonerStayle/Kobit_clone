@@ -1,4 +1,4 @@
-package kr.loner.korbit.ui.ticker
+package kr.loner.korbit.ui.ticker.model
 
 import kr.loner.domain.model.Ticker
 
@@ -19,7 +19,7 @@ data class TickerUiModel(
 //    가상 자산명
     val currencyPair: String,
     val isFavorite:Boolean = false,
-    val growthType:GrowthStatus,
+    val growthType: GrowthStatus,
     val orgData:Ticker,
 ){
     enum class GrowthStatus{

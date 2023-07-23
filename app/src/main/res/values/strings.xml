@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Korbit</string>
+    <string name="retry">재시도</string>
+    <string name="data_result_error">데이터를 가져오지 못했습니다.</string>
 </resources>

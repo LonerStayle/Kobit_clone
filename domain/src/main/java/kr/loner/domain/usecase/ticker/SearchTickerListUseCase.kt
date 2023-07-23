@@ -8,9 +8,9 @@ import kr.loner.domain.repository.TickerRepository
 import kr.loner.domain.usecase.base.UseCase
 import javax.inject.Inject
 
-class SearchListUseCase @Inject constructor(
+class SearchTickerListUseCase @Inject constructor(
     private val tickerRepository: TickerRepository
-) : UseCase<SearchListUseCase.SearchQuery, Flow<TickerList>>() {
+) : UseCase<SearchTickerListUseCase.SearchQuery, Flow<TickerList>>() {
     override suspend fun invoke(param: SearchQuery): Flow<TickerList> {
         return tickerRepository.getTickerList().map { list ->
             val filtersByQuery = list.tickers.sortedBy(Ticker::volume).filter { ticker ->
@@ -19,22 +19,37 @@ class SearchListUseCase @Inject constructor(
 
             val result: List<Ticker> = filtersByQuery.sortedWith(
                 when (param.order) {
+                    Order.CurrencyPairASC -> {
+                        compareByDescending { it.currencyPair }
+                    }
 
-                    Order.CurrencyPairASC -> { compareByDescending { it.currencyPair } }
+                    Order.CurrencyPairDESC -> {
+                        compareBy { it.currencyPair }
+                    }
 
-                    Order.CurrencyPairDESC -> { compareBy { it.currencyPair } }
+                    Order.LastASC -> {
+                        compareByDescending { it.last }
+                    }
 
-                    Order.LastASC -> { compareByDescending { it.last } }
+                    Order.LastDESC -> {
+                        compareBy { it.last }
+                    }
 
-                    Order.LastDESC -> { compareBy { it.last } }
+                    Order.ChangePercentASC -> {
+                        compareByDescending { it.changePercent }
+                    }
 
-                    Order.ChangePercentASC -> { compareByDescending { it.changePercent } }
+                    Order.ChangePercentDESC -> {
+                        compareBy { it.changePercent }
+                    }
 
-                    Order.ChangePercentDESC -> { compareBy { it.changePercent } }
+                    Order.VolumeASC -> {
+                        compareByDescending { it.volume }
+                    }
 
-                    Order.VolumeASC -> { compareByDescending { it.volume } }
-
-                    Order.VolumeDESC -> { compareBy { it.volume } }
+                    Order.VolumeDESC -> {
+                        compareBy { it.volume }
+                    }
 
                     Order.None -> Comparator { _, _ -> 0 }
                 }

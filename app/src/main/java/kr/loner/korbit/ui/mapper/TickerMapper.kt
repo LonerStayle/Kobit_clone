@@ -2,8 +2,8 @@ package kr.loner.korbit.ui.mapper
 
 import kr.loner.domain.model.Ticker
 import kr.loner.domain.model.TickerList
-import kr.loner.korbit.ui.ticker.TickerListUiModel
-import kr.loner.korbit.ui.ticker.TickerUiModel
+import kr.loner.korbit.ui.ticker.model.TickerListUiModel
+import kr.loner.korbit.ui.ticker.model.TickerUiModel
 import java.text.DecimalFormat
 
 fun TickerList.toUiModel() = TickerListUiModel(this.tickers.map(Ticker::toUiModel))

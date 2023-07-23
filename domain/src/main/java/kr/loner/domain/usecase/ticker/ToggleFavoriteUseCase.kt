@@ -9,7 +9,7 @@ import javax.inject.Inject
 class ToggleFavoriteUseCase @Inject constructor(private val tickerRepository: TickerRepository) :
     UseCase<Ticker, Unit>() {
     override suspend fun invoke(param: Ticker) {
-        tickerRepository.isTickerFavorite(
+        tickerRepository.toggleTickerFavorite(
             BookMark(
                 param.currencyPair,
                 BookMark.Type.Ticker,

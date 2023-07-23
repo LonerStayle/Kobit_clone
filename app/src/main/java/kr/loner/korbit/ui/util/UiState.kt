@@ -14,10 +14,6 @@ sealed class UiState<out R> {
         }
     }
 }
-
-val UiState<*>.succeeded
-    get() = this is UiState.Success && data != null
-
 val <T> UiState<T>.data: T?
     get() = (this as? UiState.Success)?.data
 

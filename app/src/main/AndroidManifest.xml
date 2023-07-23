@@ -15,7 +15,7 @@
         android:name=".app.TickerApp"
         >
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.ticker.TickerActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Korbit">

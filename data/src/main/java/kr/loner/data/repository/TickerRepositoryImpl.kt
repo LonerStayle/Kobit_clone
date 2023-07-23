@@ -35,11 +35,7 @@ class TickerRepositoryImpl @Inject constructor(
 
     }
 
-    override suspend fun getFavoriteTickerList(): Flow<TickerList> {
-        return getTickerList().map { it.copy(it.tickers.filter(Ticker::isFavorite))}
-    }
-
-    override suspend fun isTickerFavorite(bookMark: BookMark) {
+    override suspend fun toggleTickerFavorite(bookMark: BookMark) {
         bookMarkLocalSource.isFavorite(bookMark.copy(type = BookMark.Type.Ticker).toDto())
     }
 
