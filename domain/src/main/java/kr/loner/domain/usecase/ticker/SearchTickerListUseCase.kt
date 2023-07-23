@@ -20,11 +20,11 @@ class SearchTickerListUseCase @Inject constructor(
             val result: List<Ticker> = filtersByQuery.sortedWith(
                 when (param.order) {
                     Order.CurrencyPairASC -> {
-                        compareBy { it.currencyPair}
+                        compareBy { it.currencyPair }
                     }
 
                     Order.CurrencyPairDESC -> {
-                        compareByDescending { it.currencyPair}
+                        compareByDescending { it.currencyPair }
                     }
 
                     Order.LastASC -> {

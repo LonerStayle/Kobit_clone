@@ -18,7 +18,7 @@ object TickerMapper {
             it.value.volume,
             it.value.change,
             it.value.changePercent,
-            it.key.replace("_","/").uppercase(),
+            it.key.replace("_", "/").uppercase(),
         )
     })
 

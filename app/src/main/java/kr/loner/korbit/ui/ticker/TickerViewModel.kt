@@ -24,8 +24,6 @@ import kr.loner.korbit.ui.ticker.model.TickerListUiModel
 import kr.loner.korbit.ui.ticker.model.TickerUiModel
 import kr.loner.korbit.ui.util.UiState
 import kr.loner.korbit.ui.util.data
-import kr.loner.korbit.ui.util.exception
-import kr.loner.korbit.ui.util.isError
 import javax.inject.Inject
 
 @HiltViewModel
