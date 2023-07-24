@@ -14,7 +14,7 @@ class SearchTickerListUseCase @Inject constructor(
     override suspend fun invoke(param: SearchQuery): Flow<TickerList> {
         return tickerRepository.getTickerList().map { list ->
             val filtersByQuery = list.tickers.sortedByDescending(Ticker::volume).filter { ticker ->
-                ticker.currencyPair.contains(param.queryText)
+                ticker.currencyPair.contains(param.queryText.uppercase())
             }
 
             val result: List<Ticker> = filtersByQuery.sortedWith(
